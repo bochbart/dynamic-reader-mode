@@ -116,8 +116,8 @@ Initial release of Dynamic Reader Mode
 
 == Development ==
 
-* [GitHub Repository](https://github.com/bartboch/dynamic-reader-mode)
-* Found a bug? [Create an issue](https://github.com/bartboch/dynamic-reader-mode/issues)
+* [GitHub Repository](https://github.com/bochbart/dynamic-reader-mode)
+* Found a bug? [Create an issue](https://github.com/bochbart/dynamic-reader-mode/issues)
 
 = For Developers =
 
