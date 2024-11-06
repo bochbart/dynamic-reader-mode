@@ -1,0 +1,182 @@
+/**
+ * Dynamic Reader Mode - Frontend Styles
+ *
+ * Defines all visual styles for the reader mode functionality including
+ * the dimming effect and toggle button appearance.
+ *
+ * @package     DynamicReaderMode
+ * @author      Bart Boch
+ * @copyright   2024 Bart Boch
+ * @link        https://bartboch.com
+ * @since       1.0.0
+ */
+
+/**
+ * Toggle Button Base Styles
+ *
+ * Defines the floating button that allows users to toggle reader mode.
+ * Button is more prominent when reader mode is inactive.
+ */
+ .drm-toggle-button {
+    /* Positioning */
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 999999;
+
+    /* Dimensions and shape */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    /* Visual styling */
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(221, 221, 221, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    /* Interaction */
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    /* Default state - more visible */
+    opacity: 0.9;
+}
+
+/**
+ * Toggle Button States
+ *
+ * Defines visual feedback for button interactions.
+ * Button becomes more visible on hover for better UX.
+ */
+.drm-toggle-button:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.drm-toggle-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.4);
+    opacity: 1;
+}
+
+/**
+ * Toggle Button Icon
+ *
+ * Creates a visual indicator for the reader mode state.
+ * Icon is subtle by default and becomes more prominent on hover.
+ */
+.drm-toggle-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.drm-toggle-button:hover .drm-toggle-icon {
+    opacity: 1;
+}
+
+.drm-toggle-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border: 1px solid rgba(102, 102, 102, 0.8);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.drm-toggle-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    background-color: rgba(102, 102, 102, 0.8);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/**
+ * Active State Styles
+ *
+ * When reader mode is active, the button becomes more subtle
+ * but still visible enough for interaction.
+ */
+.drm-toggle-button.drm-active {
+    opacity: 0.4;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(221, 221, 221, 0.6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.drm-toggle-button.drm-active:hover {
+    opacity: 0.9;
+}
+
+.drm-toggle-button.drm-active .drm-toggle-icon::before {
+    border-color: rgba(66, 153, 225, 0.8);
+}
+
+.drm-toggle-button.drm-active .drm-toggle-icon::after {
+    background-color: rgba(66, 153, 225, 0.8);
+}
+
+/**
+ * Dark Mode Support
+ *
+ * Adjusts colors and contrasts for dark mode themes.
+ */
+@media (prefers-color-scheme: dark) {
+    .drm-toggle-button {
+        background-color: rgba(45, 55, 72, 0.9);
+        border-color: rgba(74, 85, 104, 0.8);
+    }
+
+    .drm-toggle-icon::before {
+        border-color: rgba(160, 174, 192, 0.8);
+    }
+
+    .drm-toggle-icon::after {
+        background-color: rgba(160, 174, 192, 0.8);
+    }
+
+    .drm-toggle-button.drm-active {
+        background-color: rgba(45, 55, 72, 0.7);
+    }
+
+    .drm-toggle-button.drm-active .drm-toggle-icon::before {
+        border-color: rgba(144, 205, 244, 0.8);
+    }
+
+    .drm-toggle-button.drm-active .drm-toggle-icon::after {
+        background-color: rgba(144, 205, 244, 0.8);
+    }
+}
+
+/**
+ * Accessibility Improvements
+ *
+ * Respects user preferences for reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+    .drm-toggle-button,
+    .drm-toggle-icon,
+    .drm-toggle-icon::before,
+    .drm-toggle-icon::after {
+        transition: none !important;
+    }
+}
